@@ -1,0 +1,148 @@
+body{
+    background-color:  #4d4d4d;
+    margin: 0;
+    margin: 0;
+    font-family:  'Roboto','Open Sans';
+    font-size: 13px;
+    color: white;
+
+}
+/* Esquema principal */
+.header{
+    grid-area: header;
+    background-color: #4d4d4d;
+    color: white;
+    height: 40px;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.menu{
+    grid-area: menu;
+    background-color: #4d4d4d;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+    margin: 0px;
+    padding:  0px 5px 0px 0px;
+    border-right: 2px solid rgb(142, 140, 140);
+
+}
+.main{
+    grid-area: main;
+    background-color: #4d4d4d;
+}
+.footer{
+    grid-area: footer;
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #4d4d4d;
+    
+    width:100%;
+    height: 40px; 
+}
+.footer a{
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+
+.grid-container{
+    background-color: #4d4d4d;
+    display: grid;
+    grid-template-areas:
+        'menu header header header'
+        'menu main main main'
+        'menu footer footer footer';
+
+}
+
+/*
+.grid-container_main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    justify-content: center;
+    align-items: stretch;
+}
+
+*/
+.columna{
+    display: grid;
+    justify-content: center;
+    align-items: stretch;
+}
+/* Cards*/
+.card{
+    background-color: #595959;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    text-align: center;
+    border: solid  1px gray;  
+    -moz-box-shadow: inset 0 0 5px #888;
+    -webkit-box-shadow: inset 0 0 5px#888;
+    box-shadow: inner 0 0 5px #888; 
+    padding: 0px 0px 5px 0px; 
+}
+.card .image{
+    margin: 0;
+    padding: 0;
+    
+}
+.card .title{
+    font-weight: 500;
+    font-size: 13px;
+    padding: 10px;
+
+}
+.card .value{
+    color: white;
+    font-weight: 300;
+    font-size: 12px;
+    
+}
+.card .content{
+    color: white;
+    font-weight: 500;
+    font-size: 12px;
+    padding: 0px 0px 10px 0px;
+
+}
+.card .link{
+    font-weight: 500;
+    font-size: 10px;
+    margin: 0;
+    padding: 5px;
+    
+}
+.card img{
+    object-fit: cover;
+    width:100%;
+    height:100%;
+    border-radius: 3px;
+    
+}
+
+input{
+    width: 45px;
+    text-align: center;
+    border-radius: 5px;
+    border-color: lightgray;
+}
+
+button{
+    min-width: 35%;
+    text-align: center;
+    border:0px;
+    border-radius: 3px;
+    font-size: 10px;
+    color:black;
+    background-color:#09cdf4;
+    padding: 8px;
+    
+}
+
