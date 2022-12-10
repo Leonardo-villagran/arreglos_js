@@ -55,7 +55,7 @@ var total = document.querySelector('#total');
 var boton = document.querySelector("#boton");
 var main = document.querySelector("#main");
 
-//definir variables de los inputs al iniciar (vacías).
+//Definir variables de los inputs al iniciar (vacías).
 var num11 = document.querySelector('#num');
 var num10 = num11.value;
 var min11 = document.querySelector('#min');
@@ -63,7 +63,7 @@ var min10 = min11.value;
 var max11= document.querySelector('#max');
 var max10 = max11.value;
 
-//Imprimir todos los objetos al ejecutar la web con los inputs vacíos. 
+//Imprimir todos las propiedades al ejecutar la web con los inputs vacíos (para que la web no se vea vacía al iniciar). 
 if (num10 == "" || min10 == "" || max10 == "") {
   imprimir_todos_los_resultados();
 }
@@ -76,6 +76,8 @@ boton.addEventListener("click", function () {
 //Función que inicia el cálculo de los procesos a llamar.
 
 function calcular_total() {
+
+  //Definir variables de los inputs con valores.
   var num1 = document.querySelector('#num');
   var num = num1.value;
   var min1 = document.querySelector('#min');
@@ -83,13 +85,13 @@ function calcular_total() {
   var max1 = document.querySelector('#max');
   var max = max1.value;
 
-  //Determinar si faltan inputs por completar, no puede quedar ni uno vacío.
+  //Determinar si faltan inputs por completar, no puede quedar ni uno vacío.Además, se imprimen todos los datos para que la web no quede vacía. 
   if (num == "" || min == "" || max == "") {
     alert("Faltan campos por llenar.")
     imprimir_todos_los_resultados();
   }
   else {
-    //En caso de que ninguno esté vacío buscar resultados 
+    //En caso de que ninguno esté vacío buscar resultados. 
     buscar_resultados(num, min, max);
   }
 
@@ -100,8 +102,9 @@ function calcular_total() {
 function buscar_resultados(num, min, max) {
   var cont = 0;
   var html = "";
-  //Recorrer el arreglo de propiedades
+  //Recorrer el arreglo de propiedades.
   for (let propiedad of propiedades) {
+    
     //Determinar si la propiedad dentro del recorrido cumple las condiciones solicitadas.
     if (propiedad.rooms == num && propiedad.m >= min && propiedad.m <= max) {
 
