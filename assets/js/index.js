@@ -1,4 +1,4 @@
-//Definir objetos que van a ser utilizados en el template.
+//Definir el arreglo de objetos que van a ser utilizados en el template.
 const propiedades = [
   {
     name: "Casa de campo",
@@ -63,7 +63,7 @@ var min10 = min11.value;
 var max11= document.querySelector('#max');
 var max10 = max11.value;
 
-//Imprimir todos las propiedades al ejecutar la web con los inputs vacíos (para que la web no se vea vacía al iniciar). 
+//Imprimir todas las propiedades al ejecutar la web con los inputs vacíos (para que la web no se vea vacía al iniciar). 
 if (num10 == "" || min10 == "" || max10 == "") {
   imprimir_todos_los_resultados();
 }
@@ -73,8 +73,7 @@ boton.addEventListener("click", function () {
   calcular_total();
 });
 
-//Función que inicia el cálculo de los procesos a llamar.
-
+//Función que inicia el cálculo de los procesos a ejecutar.
 function calcular_total() {
 
   //Definir variables de los inputs con valores.
@@ -85,7 +84,7 @@ function calcular_total() {
   var max1 = document.querySelector('#max');
   var max = max1.value;
 
-  //Determinar si faltan inputs por completar, no puede quedar ni uno vacío.Además, se imprimen todos los datos para que la web no quede vacía. 
+  //Determinar si faltan inputs por completar, no puede quedar ni uno vacío. Además, se imprimen todos los datos para que la web no quede vacía. 
   if (num == "" || min == "" || max == "") {
     alert("Faltan campos por llenar.")
     imprimir_todos_los_resultados();
@@ -97,11 +96,15 @@ function calcular_total() {
 
 }
 
-//Función que recorre el objeto y determina si la cantidad de piezas y el mínimo y máximo de metros corresponde con lo buscado. 
+//Función que recorre el arreglo y determina si la cantidad de cuartos y el valor de metros está entre el mínimo y máximo. 
 
 function buscar_resultados(num, min, max) {
+  
+  //Variable para contar la cantidad de propiedades que cumplen la condición.
   var cont = 0;
+  //Variable que almacena el html de las propiedades que cumplen la condición.
   var html = "";
+
   //Recorrer el arreglo de propiedades.
   for (let propiedad of propiedades) {
     
@@ -116,15 +119,18 @@ function buscar_resultados(num, min, max) {
       let rooms = propiedad.rooms;
       let m = propiedad.m;
 
+      //Agregar cada propiedad a la variable, que contendrá todas las propiedades que cumplen la condición.
       html += imprimir_propiedad(name, description, src, rooms, m);
     }
 
   }
+  //Imprimir emn la web la cantidad de propiedades que cumplen la condición.
   total.innerHTML = cont;
+  //Imprimir en la web las propiedades que cumplen la condición.
   main.innerHTML = html;
 }
 
-//función que imprime todas las propiedades. Se utiliza al ejecutar la web por primera vez. Para que se vean todos los resultados antes de realizar la búsqueda
+//función que imprime todas las propiedades. Se utiliza al ejecutar la web por primera vez. Para que se vean todos los resultados antes de realizar la búsqueda.
 
 function imprimir_todos_los_resultados() {
   var cont = 0;

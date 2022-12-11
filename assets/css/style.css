@@ -28,6 +28,7 @@ body{
     margin: 0px;
     padding:  0px 5px 0px 0px;
     border-right: 2px solid rgb(142, 140, 140);
+    width: 145px;
 
 }
 .main{
@@ -60,21 +61,12 @@ body{
 
 }
 
-/*
-.grid-container_main {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-    justify-content: center;
-    align-items: stretch;
-}
-
-*/
 .columna{
     display: grid;
     justify-content: center;
     align-items: stretch;
 }
+
 /* Cards*/
 .card{
     background-color: #595959;
@@ -126,6 +118,8 @@ body{
     border-radius: 3px;
     
 }
+
+/*Form tags */
 
 input{
     width: 45px;
