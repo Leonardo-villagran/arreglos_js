@@ -50,22 +50,29 @@ const propiedades = [
   }
 ];
 
-//Definir variables a utilizar
+//Definir variables globales a utilizar
 let total = document.querySelector('#total');
 let boton = document.querySelector("#boton");
 let main = document.querySelector("#main");
 
-//Definir variables de los inputs al iniciar (vacías).
-let num11 = document.querySelector('#num');
-let num10 = num11.value;
-let min11 = document.querySelector('#min');
-let min10 = min11.value;
-let max11= document.querySelector('#max');
-let max10 = max11.value;
+iniciar();
 
-//Imprimir todas las propiedades al ejecutar la web con los inputs vacíos (para que la web no se vea vacía al iniciar). 
-if (num10 == "" || min10 == "" || max10 == "") {
-  imprimir_todos_los_resultados();
+//Permite iniciar la web con todos los objetos sin que se presione un botón
+function iniciar(){
+
+    //Definir variables de los inputs al iniciar (vacías).
+    let num1 = document.querySelector('#num');
+    let num = num1.value;
+    let min1 = document.querySelector('#min');
+    let min = min1.value;
+    let max1= document.querySelector('#max');
+    let max = max1.value;
+
+    //Imprimir todas las propiedades al ejecutar la web con los inputs vacíos (para que la web no se vea vacía al iniciar). 
+    if (num == "" || min == "" || max == "") {
+      imprimir_todos_los_resultados();
+  }
+
 }
 
 //Generar el evento del botón para realizar los cálculos.
@@ -105,7 +112,7 @@ function buscar_resultados(num, min, max) {
   
   //Variable para contar la cantidad de propiedades que cumplen la condición.
   let cont = 0;
-  //Variable que almacena el html de las propiedades que cumplen la condición.
+  //Variable que almacenará el html de las propiedades que cumplen la condición.
   let html = "";
 
   //Recorrer el arreglo de propiedades.
@@ -115,67 +122,80 @@ function buscar_resultados(num, min, max) {
     if (propiedad.rooms == num && propiedad.m >= min && propiedad.m <= max) {
 
       cont = cont + 1;
-
+      //Generar variables que almacenan los datos del objeto que cumple la condición.
       let name = propiedad.name;
       let description = propiedad.description;
       let src = propiedad.src;
       let rooms = propiedad.rooms;
       let m = propiedad.m;
 
-      //Agregar cada propiedad a la variable, que contendrá todas las propiedades que cumplen la condición.
+      //Generar el html que contendrá los datos de cada objeto que cumple la condición.
       html += imprimir_propiedad(name, description, src, rooms, m);
     }
 
   }
-  //Imprimir emn la web la cantidad de propiedades que cumplen la condición.
-  total.innerHTML = cont;
-  //Imprimir en la web las propiedades que cumplen la condición.
-  main.innerHTML = html;
+
+  if (cont==0){
+    //Imprimir un cero
+    total.innerHTML = cont;
+    //Imprimir que no existen resultados en la búsqueda.
+    main.innerHTML = "<h1 class='text-center'>No existen resultados en la búsqueda.</h1>" ;
+  }
+  else{
+    //Imprimir en la web la cantidad de propiedades que cumplen la condición.
+    total.innerHTML = cont;
+    //Imprimir en la web las propiedades que cumplen la condición.
+    main.innerHTML = html;
+  }
+
+  
 }
 
 //función que imprime todas las propiedades. Se utiliza al ejecutar la web por primera vez. Para que se vean todos los resultados antes de realizar la búsqueda.
 
 function imprimir_todos_los_resultados() {
 
-
+  //Variable para contar la cantidad de propiedades que se imprimen.
   let cont = 0;
+  //Variable que almacenará el html todas las propiedades.
   let html = "";
 
   //Recorrer el arreglo de propiedades
   for (let propiedad of propiedades) {
 
     cont = cont + 1;
+    //Generar variables que almacenan los datos de un objeto.
     let name = propiedad.name;
     let description = propiedad.description;
     let src = propiedad.src;
     let rooms = propiedad.rooms;
     let m = propiedad.m;
+    //Generar el html que almacenará todos los datos de cada objeto.
     html += imprimir_propiedad(name, description, src, rooms, m);
 
   }
+  //Imprimir emn la web la cantidad de propiedades que se muestran.
   total.innerHTML = cont;
+  //Imprimir en la web todas las propiedades.
   main.innerHTML = html;
 
 }
 
-//Función que imprime la propiedad, dado los datos de un objeto a través de interpolación en un template.   
+//Función que imprime la propiedad requerida, dado los datos de un objeto a través de interpolación en un template.   
 
 function imprimir_propiedad(name, description, src, rooms, m) {
   let html = `
-  <div class="columna col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4">
+    <div class="columna col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4">
       <div class="card">
           <div class="image"><img src="${src}"></div>
           <div class="title">${name}</div>
           <div class="value">
               <div class="d-flex justify-content-evenly">
-                  <p>Cuartos: ${rooms}</p>
-                  <p>Metros: ${m}</p>
+                  <p>Cuartos: ${rooms}</p><p>Metros: ${m}</p>
               </div> 
           </div>
           <div class="content">${description}</div>
-          <div class="link">
-          <button type="submit">Ver más</button>
-          </div>
+          <div class="link"><button type="submit">Ver más</button></div>
       </div>
     </div>
   `;
