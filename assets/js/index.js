@@ -51,17 +51,17 @@ const propiedades = [
 ];
 
 //Definir variables a utilizar
-var total = document.querySelector('#total');
-var boton = document.querySelector("#boton");
-var main = document.querySelector("#main");
+let total = document.querySelector('#total');
+let boton = document.querySelector("#boton");
+let main = document.querySelector("#main");
 
 //Definir variables de los inputs al iniciar (vacías).
-var num11 = document.querySelector('#num');
-var num10 = num11.value;
-var min11 = document.querySelector('#min');
-var min10 = min11.value;
-var max11= document.querySelector('#max');
-var max10 = max11.value;
+let num11 = document.querySelector('#num');
+let num10 = num11.value;
+let min11 = document.querySelector('#min');
+let min10 = min11.value;
+let max11= document.querySelector('#max');
+let max10 = max11.value;
 
 //Imprimir todas las propiedades al ejecutar la web con los inputs vacíos (para que la web no se vea vacía al iniciar). 
 if (num10 == "" || min10 == "" || max10 == "") {
@@ -77,17 +77,20 @@ boton.addEventListener("click", function () {
 function calcular_total() {
 
   //Definir variables de los inputs con valores.
-  var num1 = document.querySelector('#num');
-  var num = num1.value;
-  var min1 = document.querySelector('#min');
-  var min = min1.value;
-  var max1 = document.querySelector('#max');
-  var max = max1.value;
+  let num1 = document.querySelector('#num');
+  let num = num1.value;
+  let min1 = document.querySelector('#min');
+  let min = min1.value;
+  let max1 = document.querySelector('#max');
+  let max = max1.value;
 
   //Determinar si faltan inputs por completar, no puede quedar ni uno vacío. Además, se imprimen todos los datos para que la web no quede vacía. 
   if (num == "" || min == "" || max == "") {
-    alert("Faltan campos por llenar.")
+    num1.value="";
+    min1.value="";
+    max1.value="";
     imprimir_todos_los_resultados();
+    alert("Faltan campos por llenar.")
   }
   else {
     //En caso de que ninguno esté vacío buscar resultados. 
@@ -101,9 +104,9 @@ function calcular_total() {
 function buscar_resultados(num, min, max) {
   
   //Variable para contar la cantidad de propiedades que cumplen la condición.
-  var cont = 0;
+  let cont = 0;
   //Variable que almacena el html de las propiedades que cumplen la condición.
-  var html = "";
+  let html = "";
 
   //Recorrer el arreglo de propiedades.
   for (let propiedad of propiedades) {
@@ -133,8 +136,10 @@ function buscar_resultados(num, min, max) {
 //función que imprime todas las propiedades. Se utiliza al ejecutar la web por primera vez. Para que se vean todos los resultados antes de realizar la búsqueda.
 
 function imprimir_todos_los_resultados() {
-  var cont = 0;
-  var html = "";
+
+
+  let cont = 0;
+  let html = "";
 
   //Recorrer el arreglo de propiedades
   for (let propiedad of propiedades) {
@@ -150,12 +155,13 @@ function imprimir_todos_los_resultados() {
   }
   total.innerHTML = cont;
   main.innerHTML = html;
+
 }
 
 //Función que imprime la propiedad, dado los datos de un objeto a través de interpolación en un template.   
 
 function imprimir_propiedad(name, description, src, rooms, m) {
-  var html = `
+  let html = `
   <div class="columna col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4">
       <div class="card">
           <div class="image"><img src="${src}"></div>
